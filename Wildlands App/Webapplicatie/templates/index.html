@@ -1,0 +1,11 @@
+{% extends 'base.html' %} 
+{% block content %}
+<br>
+<div class="jumbotron" style="background: #EA9E8D;">
+    {% if current_user.is_authenticated %}
+    <h1>Welkom terug!</h1>
+    {% else %} 
+    <h1>Log in om verder te gaan.</h1>
+    {% endif %}
+</div>
+{% endblock %}

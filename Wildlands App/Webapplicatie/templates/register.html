@@ -1,0 +1,50 @@
+{% extends 'base.html' %} 
+{% block content %}
+{{ error }}
+<br>
+<div class="jumbotron" style="background: #EA9E8D;">
+    <h1>
+        Maak een account aan om toegang te krijgen.
+    </h1>
+    <hr>
+    <form method="POST" style="text-align: center;">
+        {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.first_name.label }}
+                <br>
+                {{ form.first_name(class="form-control", style="width: 25%; margin-left: auto; margin-right: auto;", placeholder="Voer hier uw voornaam in.")  }}
+            <div class="form-group">
+                {{ form.last_name.label }}
+                <br>
+                {{ form.last_name(class="form-control", style="width: 25%; margin-left: auto; margin-right: auto;", placeholder="Voer hier uw achternaam in.")  }}
+            </div>
+            <div class="form-group">
+                {{ form.username.label }}
+                <br>
+                {{ form.username(class="form-control", style="width: 25%; margin-left: auto; margin-right: auto;", placeholder="Voer hier uw gebruikersnaam in.")  }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label }}
+                <br>
+                {{ form.email(class="form-control", style="width: 25%; margin-left: auto; margin-right: auto;", placeholder="Voer hier uw emailadres in.")  }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label }}
+                <br>
+                {{ form.password(class="form-control", style="width: 25%; margin-left: auto; margin-right: auto;", placeholder="Voer hier uw wachtwoord in.")  }}
+            </div>
+            <div class="form-group">
+                {{ form.confirm.label }}
+                <br>
+                {{ form.confirm(class="form-control", style="width: 25%; margin-left: auto; margin-right: auto;", placeholder="Herhaal uw wachtwoord")  }}
+            </div>
+            <div class="form-group">
+                {{ form.tel.label }}
+                <br>
+                {{ form.tel(class="form-control", style="width: 25%; margin-left: auto; margin-right: auto;", placeholder="Voer hier uw telefoonnummer in.")  }}
+            </div>
+        <br>
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+</div>
+{% endblock %}

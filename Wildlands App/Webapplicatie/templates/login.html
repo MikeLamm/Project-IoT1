@@ -1,0 +1,30 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{{ error }}
+<br>
+<div class="jumbotron" style="background: #EA9E8D;">
+    <h1>
+        Log in om verder te gaan.
+    </h1>
+    <hr>
+    <form method="POST" style="text-align: center;">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <br>
+            {{ form.email.label }}
+            <br>
+            {{ form.email(class="form-control", style="width: 20%; margin-left: auto; margin-right: auto;", placeholder="Voer hier uw emailadres in.") }}
+        </div>
+        <div class="form-group">
+            <br>
+            {{ form.password.label }}
+            <br>
+            {{ form.password(class="form-control", style="width: 20%; margin-left: auto; margin-right: auto;", placeholder="Voer hier uw wachtwoord in.") }}
+            <br>
+        </div>
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+    <hr>
+    <small style="text-align: center;">Geen account? Registreer je <a href={{ url_for('register') }}>hier.</a></small>
+</div>
+{% endblock %} 

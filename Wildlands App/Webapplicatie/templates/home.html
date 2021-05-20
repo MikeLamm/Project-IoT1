@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block head %} 
+<meta http-equiv="refresh" content="15">
+{% endblock %}
+{% block content %}
+{% for i in residence %}
+{% for path in path %}
+<br>
+<meta http-equiv="refresh" content="15">
+<div class="jumbotron" style="background: #EA9E8D;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h4>{{ i.name }}</h5>
+                <hr>
+                <div class="mapframe" style="background-color: #DAEFB3; border-radius: 8px;">
+                    <img src={{ path }} width='300px' height='300px' id={{ i.name }}>
+                </div>
+            </div>
+            <div class="col-sm">
+                <h5 style="text-align: center;">Aanwezige dieren:</h5>
+                <br>
+                <ul class="list-group list-group-flush">
+                {% for j in list_of_animals[i.id] %}
+                <li class="list-group-item" style="background: #EEF4D4; border-radius: 8px; margin-bottom: 2.5%;">{{ j.name }} <span style="font-style: italic;">{{ soorten[j.soort] }}</span></li>
+                {% endfor %} 
+                </ul>
+            </div>
+            <div class="col-sm" style="text-align: center;">
+                <h5> Status:</h5>
+                <br>
+                {% if missing_animals[i.id] == [] %} 
+                <img src="static/checkmark.png" width="40" length="40">
+                {% else %} 
+                <img src="static/error-message.gif" width="40" length="40">
+                <hr>
+                <h5>Missende dieren:</h5>
+                <br>
+                {% endif %}
+                {% for j in missing_animals[i.id] %}
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="background: #EEF4D4; border-radius: 8px; margin-bottom: 2.5%;">{{ j.name }} <span style="font-style: italic;">{{ soorten[j.soort] }}</span></li>
+                </ul>
+                {% endfor %} 
+            </div>
+        </div>
+    </div>    
+</div>  
+{% endfor %}
+{% endfor %} 
+{% endblock %}

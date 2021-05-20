@@ -1,0 +1,21 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{{ error }}
+<br>
+<div class="jumbotron" style="background: #EA9E8D;">
+    <h1>Twee Factor Authenticatie</h1>
+    <p>Houdt uw mobiele telefoon in de gaten voor de authenticatiecode.</p>
+    <hr>
+    <form method="POST" style="text-align: center;">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <br>
+            {{ form.code.label }}
+            <br>
+            {{ form.code }}
+            <br>
+        </div>
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+</div>
+{% endblock %}   

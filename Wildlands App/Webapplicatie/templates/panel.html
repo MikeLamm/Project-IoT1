@@ -1,0 +1,135 @@
+{% extends 'base.html' %} 
+{% block content %} 
+<br>
+<div class="jumbotron" style="background: #EA9E8D;">
+    <h3>Beveiliging en Privacy</h3>
+    <br>
+    <div class="card" style="background: #EEF4D4;">
+        <h5 class="card-header" style="background: #DAEFB3;">Wachtwoord wijzigen</h5>
+        <div class="card-body">
+            <h6 class="card-title">Wijzig hier uw wachtwoord</h6>
+            <br>
+            <form method="POST">
+            <div class="form-group">
+                {{ change_pw.hidden_tag()}}
+                {{ change_pw.password.label }}
+                {{ change_pw.password(class="form-control", style="width: 25%; margin-left: auto; margin-right: auto;", placeholder="Voer hier uw nieuwe wachtwoord in.")  }}
+            </div>
+            <div class="form-group">
+                {{ change_pw.confirm.label }}
+                {{ change_pw.confirm(class="form-control", style="width: 25%; margin-left: auto; margin-right: auto;", placeholder="Herhaal uw wachtwoord.")  }}
+            </div>
+            <br>
+            {{ change_pw.submit(class="btn btn-primary") }}
+            </form>
+        </div>
+    </div>
+</div>
+{% if admin %} 
+<div class="jumbotron" style="background: #EA9E8D;">
+    <h3>Verblijven</h3>
+    <br>
+    <div class="card" style="background: #EEF4D4;">
+        <h5 class="card-header" style="background: #DAEFB3;">Beheer hier uw verblijven.</h5>
+        <br>
+        <div class="card-body" >
+            <table class="table table-striped">
+                <thead>
+                    <th scope="col">#</th>
+                    <th scope="col">Verblijven</th>
+                    <th scope="col"></th>
+                    
+                </thead>
+                <tbody>
+                    {% for i in stays %} 
+                    <tr>
+                        <th scope="row">{{ i.id }}</th>
+                        <td>{{ i.name }}</td>
+                        <td><a href="rem_stay/{{ i.id }}", class="btn btn-danger btn-small">Verwijder</a></td>
+                          
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <form method="POST">
+                            <th scope="row">Nieuw verblijf</th>
+                            {{ addstay.hidden_tag() }}
+                            <td>{{ addstay.stay(class='form-control', style="width: 25%;", placeholder='Verblijfsnaam') }}</td>
+                            <td>{{ addstay.submit(class='btn btn-success btn-small') }}</td>
+                        </form>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<br>
+<div class="jumbotron" style="background: #EA9E8D;">
+    <h3>Dieren</h3>
+    <br>
+    <div class="card" style="background: #EEF4D4;">
+        <h5 class="card-header" style="background: #DAEFB3;">Beheer hier uw dieren.</h5>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <th scope="col">#</th>
+                    <th scope="col">Naam</th>
+                    <th scope="col">Verblijf</th>
+                    <th scope="col">Soort</th>
+                    <th scope="col">Device</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    {% for i in animals %}
+                    <tr> 
+                        <th scope="row">{{ i.id }}</th>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.verblijf }}</td>
+                        <td>{{ i.soort }}</td>
+                        <td>{{ i.device }}</td>
+                        <td><a href="rem_animal/{{ i.id }}", class="btn btn-danger btn-small">Verwijder</a></td>
+                    {% endfor %}
+                    </tr>
+                    <form method="POST">
+                    <tr>
+                        <th scope="row">Voeg nieuw dier toe</th>
+                        {{ addanimal.hidden_tag() }}
+                        <td>{{ addanimal.naam(class="form-control", placeholder="Naam", style="width: 25%;") }}</td>
+                        <td>{{ addanimal.verblijf(class="form-select") }}</td>
+                        <td>{{ addanimal.soort(class="form-select") }}</td>
+                        <td>{{ addanimal.device(class="form-select") }}</td>
+                        <td>{{ addanimal.submit(class="btn btn-success btn-small") }}</td>
+                    </tr>
+                    </form>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<br>
+<div class="jumbotron" style="background: #EA9E8D;">
+    <h3>Diersoorten</h3>
+    <br>
+    <div class="card" style="background: #EEF4D4;">
+        <h5 class="card-header" style="background: #DAEFB3;">Diersoorten</h5>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <th scope="col">#</th>
+                    <th scope="col">Naam</th>
+                    <th scope="col"></th>
+                </thead>
+                <tbody>
+                    {% for i in sort %} 
+                    <tr>
+                        <th scope="row">{{ i.id }}</th>
+                        <td>{{ i.name }}</td>
+                        <td><a href="rem_sort/{{ i.id }}", class="btn btn-danger btn-small">Verwijder</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
