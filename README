@@ -1,0 +1,17 @@
+Misschien is dit een handige plek om wat standaar informatie in op te slaan?
+
+niet vergeten om in een virtual environment te zitten als je deze zooi wilt gebruiken:
+cd <Project-IoT1 Directory>
+python.exe -m venv <naam van je virual environment (voor het voorbeeld virtualenv)>
+.\virtualenv\Scripts\activate
+
+
+
+
+# Run nu de Wildlands.py app (IN DE VENV):
+python.exe 'Wildlands App'/Wildlands.py
+
+# Je krijgt een error omdat je de modules nog niet hebt geinstalleerd, installeer ze zo:  (WEER IN DE VENV)
+pip install <module (flask of flask_sqlalchemy ofzo>
+
+# Doe dit totdat de app runt, hij werkt op dit moment niet omdat Twilio problemen geeft.
